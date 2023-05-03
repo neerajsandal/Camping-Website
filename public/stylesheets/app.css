@@ -1,0 +1,74 @@
+.emailText,
+.passText {
+    display: block;
+    font-weight: 400;
+    font-style: italic;
+    padding: 5px;
+}
+
+div.valid .emailText,
+div.valid .passText,
+div.valid .userText {
+    /* font-weight: bold; */
+    color: #198754;
+}
+
+#cluster-map {
+    width: 100%;
+    height: 500px;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.button-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem;
+}
+
+@media screen and (max-width: 992px) {
+    .button-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+div.invalid .emailText,
+div.invalid .passText,
+div.invalid .userText {
+    /* font-weight: bold; */
+    color: #f00;
+}
+
+div.valid::before,
+div.invalid::before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 18px;
+    right: 5px;
+    z-index: 100;
+}
+
+/* label.valid::before {
+    background: url(/check.svg)no-repeat center /cover;
+}
+
+label.invalid::before {
+    background: url(/error.png)no-repeat center /cover;
+} */

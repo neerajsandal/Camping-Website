@@ -1,0 +1,125 @@
+<% layout('layouts/boilerplate')%>
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <div class="container d-flex justify-content-center align-items-center mb-3">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card shadow">
+                    <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+                        alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Register</h5>
+                        <form action="/register" method="POST" onsubmit="return check()" class="validated-form"
+                            novalidate>
+                            <div class="mb-3">
+                                <div class="userBox">
+                                    <label class="form-label" for="username">Username</label>
+                                    <input class="form-control" type="text" id="username" name="username" required
+                                        autofocus>
+                                    <span class="userText"></span>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="emailBox">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input class="form-control" type="email" id="email" name="email" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <span class="emailText"></span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="passBox">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input class="form-control" type="password" id="password" name="password" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <span class="passText"></span>
+                                </div>
+                            </div>
+                            <div class="d-grid mx-auto">
+                                <input type="submit" name="submit" value="Register" class="btn btn-success">
+                                <a href="/auth/google" class="btn btn-primary mt-2"> <img width="20px"
+                                        style="margin-top:0px; margin-right:0px" alt="Google sign-in"
+                                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                                    Register With Google</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const email = document.getElementById("email");
+        const password = document.getElementById("password");
+        const user = document.getElementById("username");
+        user.addEventListener('input', () => {
+            const userBox = document.querySelector('.userBox');
+            const userText = document.querySelector('.userText');
+            const userPattern = /^([_]?[a-z0-9]+)+([_]?[a-z0-9]+)*$/;
+            // Check for white space
+            if (user.value.match(userPattern)) {
+                userBox.classList.add('valid');
+                userBox.classList.remove('invalid');
+                userText.innerHTML = "";
+                user.classList.add('valid')
+            }
+            else {
+                userBox.classList.add('invalid');
+                userBox.classList.remove('valid');
+                userText.innerHTML = "Invalid Username";
+            }
+        })
+
+        email.addEventListener('input', () => {
+            const emailBox = document.querySelector('.emailBox');
+            const emailText = document.querySelector('.emailText');
+            const emailPattern = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$/;
+
+            if (email.value.match(emailPattern)) {
+                emailBox.classList.add('valid');
+                emailBox.classList.remove('invalid');
+                emailText.innerHTML = "Your Email Address in Valid";
+                email.classList.add('valid')
+            } else {
+                emailBox.classList.add('invalid');
+                emailBox.classList.remove('valid');
+                emailText.innerHTML = "Must be a valid email address.";
+            }
+        });
+
+        password.addEventListener('input', () => {
+            const passBox = document.querySelector('.passBox');
+            const passText = document.querySelector('.passText');
+            const passPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+
+            if (password.value.match(passPattern)) {
+                passBox.classList.add('valid');
+                passBox.classList.remove('invalid');
+                passText.innerHTML = "Your Password in Valid";
+                password.classList.add('valid')
+            } else {
+                passBox.classList.add('invalid');
+                passBox.classList.remove('valid');
+                passText.innerHTML = "Your password must be at least 8 characters as well as contain at least one uppercase, one lowercase, and one number.";
+            }
+        });
+
+        function check() {
+            if (password.classList.contains('valid') && email.classList.contains('valid') && user.classList.contains('valid')) {
+                console.log('true')
+                return true;
+            }
+            else {
+                console.log('false')
+                return false;
+            }
+        }
+    </script>
