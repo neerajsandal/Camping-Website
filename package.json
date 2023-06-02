@@ -21,6 +21,7 @@
     "express-mongo-sanitize": "^2.2.0",
     "express-session": "^1.17.3",
     "joi": "^17.9.2",
+    "mapbox": "^1.0.0-beta10",
     "method-override": "^3.0.0",
     "mongoose": "^6.11.0",
     "mongoose-paginate-v2": "^1.7.1",

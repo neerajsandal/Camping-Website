@@ -23,7 +23,8 @@ const reviewRoute = require('./Routes/reviewRoute')
 const oAuthRoute = require('./Routes/oAuth')
 const User = require('./models/user')
 
-mongoose.connect('mongodb://127.0.0.1:27017/Campster', {
+// mongoose.connect('mongodb://127.0.0.1:27017/Campster', {
+    mongoose.connect('mongodb://https://campster.onrender.com', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
