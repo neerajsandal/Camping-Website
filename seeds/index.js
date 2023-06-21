@@ -3,8 +3,8 @@ const Campground = require('../models/campground')
 const cities = require('./cities');
 const { descriptors, places } = require('./seedhelper')
 
- //mongoose.connect(process.env.MONGO_DB, {
-    mongoose.connect('mongodb://127.0.0.1:27017', {
+ mongoose.connect(process.env.MONGO_DB, {
+    // mongoose.connect('mongodb://127.0.0.1:27017', {
     useNewUrlParser: true,
 
     useUnifiedTopology: true

@@ -23,8 +23,8 @@ const reviewRoute = require('./Routes/reviewRoute')
 const oAuthRoute = require('./Routes/oAuth')
 const User = require('./models/user')
 
- //mongoose.connect(process.env.MONGO_DB, {
-     mongoose.connect('mongodb://127.0.0.1:27017', {
+ mongoose.connect(process.env.MONGO_DB, {
+    //  mongoose.connect('mongodb://127.0.0.1:27017', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
