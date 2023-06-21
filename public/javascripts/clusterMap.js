@@ -9,8 +9,8 @@ const map = new mapboxgl.Map({
     container: 'map',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     style: 'mapbox://styles/mapbox/dark-v11',
-    // center: [78.567352, 25.436298],
-    center: [78.7378, 23.8388],
+    center: [78.567352, 25.436298],
+    //center: [78.7378, 23.8388],
     // zoom: 3.5
     zoom : 3.3
 });
