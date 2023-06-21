@@ -56,14 +56,15 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         const email = document.getElementById("email");
         const password = document.getElementById("password");
         const user = document.getElementById("username");
         user.addEventListener('input', () => {
             const userBox = document.querySelector('.userBox');
             const userText = document.querySelector('.userText');
-            const userPattern = /^([_]?[a-z0-9]+)+([_]?[a-z0-9]+)*$/;
+            // const userPattern = /^([_]?[a-z0-9]+)+([_]?[a-z0-9]+){5,15}*$/;
+            const userPattern = /^[a-z][a-z0-9_]{4,14}$/
             // Check for white space
             if (user.value.match(userPattern)) {
                 userBox.classList.add('valid');
@@ -74,7 +75,7 @@
             else {
                 userBox.classList.add('invalid');
                 userBox.classList.remove('valid');
-                userText.innerHTML = "Invalid Username";
+                userText.innerHTML = "Username can only be in lowercase, includes numbers,underscores and no spaces";
             }
         })
 
@@ -122,4 +123,74 @@
                 return false;
             }
         }
-    </script>
+    </script> -->
+    <script>
+        const email = document.getElementById("email");
+const password = document.getElementById("password");
+const user = document.getElementById("username");
+const userBox = document.querySelector('.userBox');
+const userText = document.querySelector('.userText');
+const emailBox = document.querySelector('.emailBox');
+const emailText = document.querySelector('.emailText');
+const passBox = document.querySelector('.passBox');
+const passText = document.querySelector('.passText');
+
+user.addEventListener('input', () => {
+    const userPattern = /^[a-z][a-z0-9_]{4,14}$/;
+    if (user.value.match(userPattern)) {
+        userBox.classList.add('valid');
+        userBox.classList.remove('invalid');
+        userText.innerHTML = "Your Username is Valid";
+        user.classList.add('valid');
+    } else {
+        userBox.classList.add('invalid');
+        userBox.classList.remove('valid');
+        if (user.value.length < 5) {
+            userText.innerHTML = "Username is smaller in length. It should be at least 5 characters long.";
+        } else if (user.value.length > 14) {
+            userText.innerHTML = "Username is larger in length. It should be less than 15 characters long.";
+        } else {
+            userText.innerHTML = "Username should start with lowercase and can only include lowercase letters, numbers, underscores, and no spaces.";
+        }
+    }
+});
+
+email.addEventListener('input', () => {
+    const emailPattern = /^([A-Za-z0-9._%+-]+)@(gmail.com|yahoo.com|aol.com|icloud.com|outlook.com|hotmail.com)|([a-zA-Z0-9-]*\.edu)$/;
+    if (email.value.match(emailPattern)) {
+        emailBox.classList.add('valid');
+        emailBox.classList.remove('invalid');
+        emailText.innerHTML = "Your Email Address is Valid";
+        email.classList.add('valid');
+    } else {
+        emailBox.classList.add('invalid');
+        emailBox.classList.remove('valid');
+        emailText.innerHTML = "Enter a valid email address.";
+    }
+});
+
+password.addEventListener('input', () => {
+    const passPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+
+    if (password.value.match(passPattern)) {
+        passBox.classList.add('valid');
+        passBox.classList.remove('invalid');
+        passText.innerHTML = "Your Password is Valid";
+        password.classList.add('valid');
+    } else {
+        passBox.classList.add('invalid');
+        passBox.classList.remove('valid');
+        passText.innerHTML = "Your password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, one number, and one special character.";
+    }
+});
+
+function check() {
+    if (password.classList.contains('valid') && email.classList.contains('valid') && user.classList.contains('valid')) {
+        console.log('true');
+        return true;
+    } else {
+        console.log('false');
+        return false;
+    }
+}
+</script>
